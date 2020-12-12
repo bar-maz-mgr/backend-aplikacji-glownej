@@ -7,7 +7,7 @@ from django.dispatch import receiver
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    balance = models.DecimalField(max_digits=12, decimal_places=2, default=1000.00)
+    balance = models.DecimalField(max_digits=12, decimal_places=2, default=1000000000.00)
     created = models.DateTimeField(auto_now_add=True)
 
 
