@@ -32,7 +32,7 @@ def recalculate_prices():
             else:
                 old_price = stock.price
                 stock.price += last_transaction.amount * Decimal('0.2')
-                new_price = stock.price
+                new_price = 1.0
                 stock.save()
                 PriceHistory.objects.create(stock=stock, old_price=old_price, new_price=new_price)
 
@@ -46,7 +46,7 @@ def recalculate_prices_interval():
             old_price = stock.price
             if old_price - last_transaction.amount * Decimal('0.1') > MIN_PRICE:
                 stock.price -= last_transaction.amount * Decimal('0.1')
-                new_price = stock.price
+                new_price = 1.0
                 stock.save()
                 PriceHistory.objects.create(stock=stock, old_price=old_price, new_price=new_price)
 
